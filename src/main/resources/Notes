@@ -1,0 +1,19 @@
+Download kafka_2.11-1.1.0 or any latest version.
+
+#Needs to start zookeeper and kafka local servers.
+C:\softwares\kafka_2.11-1.1.0\kafka_2.11-1.1.0\bin\windows>zookeeper-server-start.bat .\..\..\config\zookeeper.properties
+
+C:\softwares\kafka_2.11-1.1.0\kafka_2.11-1.1.0\bin\windows>kafka-server-start.bat .\..\..\config\server.properties
+
+C:\**\softwares\kafka_2.11-2.2.1\bin\windows>kafka-topics.bat --zookeeper localhost:2181 --list
+
+C:\**\softwares\kafka_2.11-2.2.1\bin\windows>kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+
+C:\**\softwares\kafka_2.11-2.2.1\bin\windows>kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic java_in_use_topic
+
+C:\**\softwares\kafka_2.11-2.2.1\bin\windows>kafka-console-producer.bat --broker-list localhost:9092 --topic test    -----------Insert data
+C:\**\softwares\kafka_2.11-2.2.1\bin\windows>kafka-console-producer.bat --broker-list localhost:9092 --topic java_in_use_topic    -----------Insert data
+
+C:\**\softwares\kafka_2.11-2.2.1\bin\windows>kafka-console-consumer.bat --broker-list localhost:9092 --topic test -topic --from-beginning     
+
+C:\**\softwares\kafka_2.11-2.2.1\bin\windows>kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test --from-beginning   ----to see the data in consumer
